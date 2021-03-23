@@ -1,0 +1,148 @@
+.chatRoomParentDiv {
+  background: #e4e4e4 0% 0% no-repeat padding-box;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  margin-right: 3px;
+}
+
+.chatBox {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  width: 100%;
+  height: 560px;
+}
+
+.chatBoxHeader {
+  position: relative;
+}
+
+.chatBoxHeader h2 {
+  position: absolute;
+  left: 150px;
+  top: 20px;
+}
+
+.chatBoxStatusDropDown {
+  position: absolute;
+  right: 5%;
+  top: 30%;
+}
+#chatBoxProfileImg {
+  height: 70px;
+  width: 70px;
+  border: 1px solid #d2cece;
+  border-radius: 50px;
+}
+
+.chatBoxFooter {
+  background: #e4e4e4 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.messageField {
+  width: 847px;
+  height: 50px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 37px;
+  opacity: 1;
+  padding-left: 20px;
+  text-align: left;
+  font: normal normal 600 22px/33px Segoe UI;
+  letter-spacing: 0px;
+  color: #b9b9b9;
+  opacity: 1;
+}
+
+.sendButton {
+  background: #2c9e02 0% 0% no-repeat padding-box;
+  border-radius: 43px;
+  width: 82px;
+  height: 40px;
+  text-align: center;
+  font: normal normal 600 22px/30px Segoe UI;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+  position: absolute;
+  bottom: 1%;
+  right: 32%;
+}
+
+.attachButton {
+  position: absolute;
+  bottom: 1%;
+  right: 28%;
+  background-color: #e4e4e4;
+  border: none;
+}
+
+.messageByUser {
+  width: 834px;
+  height: 81px;
+  background: #ececee 0% 0% no-repeat padding-box;
+  border: 1px solid #d8d7d7;
+  border-radius: 39px;
+  opacity: 1;
+}
+
+.messageByAgent {
+  width: 834px;
+  height: 81px;
+  background: #ececee 0% 0% no-repeat padding-box;
+  border: 1px solid #d8d7d7;
+  border-radius: 39px;
+  opacity: 1;
+}
+
+.customerDetails {
+}
+
+.orderDetails {
+  text-align: left;
+  font: normal normal normal 15px/25px Segoe UI;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+}
+
+.detail {
+  border: 1px solid black;
+  margin: 2rem;
+}
+
+ul {
+  list-style-type: none;
+  font: normal normal normal 15px/20px Segoe UI;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+  padding-left: 0;
+}
+
+.issue {
+  display: flex;
+  text-align: center;
+  font: normal normal normal 20px/28px Segoe UI;
+  font: Segoe UI;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+}
+
+mat-expansion-panel {
+  margin-top: 100px;
+}
+
+mat-panel-title {
+  text-align: left;
+  font: normal normal normal 18px/28px Segoe UI;
+  letter-spacing: 0px;
+  color: #3d3d3d;
+  opacity: 1;
+}
+#issueButton {
+  font: Segoe UI;
+  margin-left: 80px;
+  color: #707070;
+  border-radius: 50px;
+}

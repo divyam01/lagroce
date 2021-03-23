@@ -1,0 +1,76 @@
+<div class="d-flex" id="wrapper">
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="row">
+      <!--Navbar-->
+      <nav
+        class="navbar navbar-expand-lg navbar-light border-bottom col-12"
+        id="navBar"
+      >
+        <!--Search bar-->
+        <div class="col-5 col-sm-5 search-col">
+          <input
+            type="search"
+            id="search-bar"
+            placeholder="Search order id, cust name, mob no, email id"
+          />
+        </div>
+        <!--Calendar pop-up-->
+        <div class="">
+          <mat-form-field appearance="" style="visibility: hidden; width: 1px">
+            <mat-date-range-input
+              [rangePicker]="picker"
+              style="visibility: hidden"
+            >
+              <input
+                matStartDate
+                placeholder="Start date"
+                type="hidden"
+                (dateInput)="getDate($event)"
+                [(ngModel)]="startDate"
+              />
+              <input
+                matEndDate
+                placeholder="End date"
+                type="hidden"
+                (dateInput)="getDate($event)"
+                [(ngModel)]="endDate"
+              />
+            </mat-date-range-input>
+            <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <button
+            mat-raised-button
+            style="
+              border: 0;
+              background-color: #ffffff !important ;
+              margin-left: 5px;
+              margin-top: 23px;
+            "
+            (click)="picker.open()"
+          >
+            <i style="font-size: large" class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+
+        <!--Toggle switch-->
+        <div class="toggle">
+          <mat-slide-toggle
+            color="primary"
+            [(ngModel)]="isChecked"
+            (change)="check()"
+            >{{ status }}</mat-slide-toggle
+          >
+        </div>
+
+        <!--Logo-->
+
+        <div id="logo-div">
+          <img src="../../../assets/Lagroce Favicon.png" id="logo-2" alt="" />
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>

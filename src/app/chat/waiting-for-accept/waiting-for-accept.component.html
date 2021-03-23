@@ -1,0 +1,66 @@
+<div
+  *ngFor="let items of data; let i = index"
+  class="issueDiv mt-5 mx-5 col-lg-10 col-md-8"
+>
+  <div class="issue mt-4 mx-4">
+    <p>
+      Issue {{ i + 1 }} : <b> "{{ items.issue_reason }}"</b>
+    </p>
+  </div>
+  <div class="acceptButtonDiv">
+    <!--accept button-->
+    <button type="button" id="accept" (click)="redirect()">Accept</button>
+  </div>
+  <div class="transferAgent">
+    <!--transfer agent dropdown-->
+    <div class="dropdown">
+      <button
+        class="btn btn-outline-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Transfer to Agent
+      </button>
+      <ul
+        class="dropdown-menu"
+        style="text-align: center"
+        aria-labelledby="dropdownMenuButton"
+      >
+        <li style="padding-left: 0" class="dropdown-item">
+          <span
+            ><img
+              style="height: 29px; width: 29px"
+              src="../../../assets/user.jpg"
+              alt=""
+          /></span>
+          Agent 1
+        </li>
+        <li style="padding-left: 0" class="dropdown-item">
+          <span
+            ><img
+              style="height: 29px; width: 29px; margin-right: 5px"
+              src="../../../assets/user.jpg"
+              alt="" /></span
+          >Agent 2
+        </li>
+        <li style="padding-left: 0" class="dropdown-item">
+          <span
+            ><img
+              style="height: 29px; width: 29px; margin-right: 5px"
+              src="../../../assets/user.jpg"
+              alt="" /></span
+          >Agent 3
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="orderId">
+    <!-- order id-->
+    <p>
+      Order Id : <b>{{ items.order_id }}</b>
+    </p>
+  </div>
+</div>

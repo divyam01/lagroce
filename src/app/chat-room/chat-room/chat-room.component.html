@@ -1,0 +1,188 @@
+   <div class="row chatRoomParentDiv">
+  <div class="col chatBox">
+    <div class="chatBoxHeader">
+      <header>
+        <img
+          class="mx-3 mt-1"
+          id="chatBoxProfileImg"
+          src="../../../assets/profile.png"
+          alt=""
+        />
+        <h2 id="userName" style="font: normal normal normal 25px/33px Segoe UI">
+          {{senderName}}
+        </h2>
+        <div class="chatBoxStatusDropDown"> 
+          <!--transfer agent dropdown-->
+           <div class="dropdown">
+            <button
+              class="btn btn-lg btn-outline-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Status
+            </button>
+            <ul
+              class="dropdown-menu"
+              style="text-align: center"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <li style="padding-left: 15px" class="dropdown-item">
+                Mark as resolved
+              </li>
+              <li style="padding-left: 12px" class="dropdown-item">
+                Mark as open
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div class="col my-3">
+      <div style="justify-content: flex-start; display: flex">
+        <div class="my-2 mx-3">
+          <img
+            style="border-radius: 50px"
+            src="../../../assets/user.jpg"
+            height="50"
+            width="50"
+          />
+        </div>
+        <div class="messageByUser">
+          <p class="my-4 mx-3">Hello</p>
+        </div>
+      </div>
+    </div>
+    <div class="col my-3">
+      <div style="justify-content: flex-start; display: flex; float: right">
+        
+        <div class="messageByAgent">
+          <p class="my-4 mx-3">{{msgByAgent}}</p>
+        </div>
+        <div class="my-2 mx-3">
+          <img
+            style="border-radius: 50px"
+            src="../../../assets/user.jpg"
+            height="50"
+            width="50"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col customerDetails">
+    <div>
+      <mat-accordion>
+        <mat-expansion-panel style="margin-top: 0" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Order details </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="orderDetails">
+            <table>
+              <tr>
+                <td>Order id: 1</td>
+                <td>Store partner name: xyz</td>
+              </tr>
+              <tr>
+                <td>Prod details: 123</td>
+                <td>POC no:</td>
+              </tr>
+              <tr>
+                <td>Deliv partner name:</td>
+                <td>Contact no:</td>
+              </tr>
+              <tr>
+                <td>Del part location: 123</td>
+                <td>Link:</td>
+              </tr>
+              <tr>
+                <td>Deliv Date: 123</td>
+                <td>Deliv time:</td>
+              </tr>
+            </table>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Customer details </mat-panel-title>
+             
+           </mat-expansion-panel-header>
+          <div>
+            <ul>
+              <li>
+                Name: {{ (user$ | async)?.name.first_name }}
+                {{ (user$ | async)?.name.last_name }}
+              </li>
+              <li>Mob no: {{ (user$ | async)?.mobile }}</li>
+              <li>Email id: {{ (user$ | async)?.email }}</li>
+            </ul>
+          </div>
+        </mat-expansion-panel> 
+
+         <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Previous issue </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            <mat-list role="list">
+              <mat-list-item role="listitem">
+                <div class="issue">
+                  Issue 1
+                  <button
+                    id="issueButton"
+                    type="button"
+                    class="btn btn-outline-secondary"
+                  >
+                    Secondary
+                  </button>
+                </div></mat-list-item
+              >
+              <mat-list-item role="listitem">
+                <div class="issue">
+                  Issue 2
+                  <button
+                    id="issueButton"
+                    type="button"
+                    class="btn btn-outline-secondary"
+                  >
+                    Secondary
+                  </button>
+                </div></mat-list-item
+              >
+              <mat-list-item role="listitem">
+                <div class="issue">
+                  Issue 3
+                  <button
+                    id="issueButton"
+                    type="button"
+                    class="btn btn-outline-secondary"
+                  >
+                    Secondary
+                  </button>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>  
+
+<!--Chat box footer-->
+ <div class="mx-3 chatBoxFooter">
+  <footer>
+    <div><input class="messageField" type="text" placeholder="Type..." [(ngModel)]="message" (keydown)="handleSubmit($event)" /></div>
+  </footer>
+</div>
+<button type="submit" class="sendButton" (click)="send()">Send</button>
+<button class="attachButton" type="submit"  >
+  <span class="material-icons">
+    <img src="../../../assets/attachment.png" alt="" />
+  </span>
+</button> 
+
+

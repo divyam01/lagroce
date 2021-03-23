@@ -1,0 +1,81 @@
+#wrapper {
+  overflow-x: hidden;
+  margin-left: 0;
+  font:  Segoe UI;
+  font-size: medium;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+}
+
+#logo-1 {
+  width: 240px;
+  height: 60px;
+  padding-bottom: 10px;
+}
+
+#sidebar-wrapper {
+  background-color: white;
+  min-height: 100vh;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 5px 5px 33px #00000008;
+  border: 1px solid #fdfcfc;
+  opacity: 1;
+  border: 0 !important;
+}
+
+.list-group-item {
+  border: 0 !important;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 1.31rem 1.25rem;
+  font-size: 1.2rem;
+}
+#sideBar {
+  background-color: white;
+}
+
+#navBar {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  padding: 15px;
+  box-shadow: 0px 3px 54px #0000000a;
+  opacity: 1;
+}
+
+#search-bar {
+  width: 40%;
+  border-radius: 12px;
+  opacity: 1;
+  border: white;
+  padding: 8px;
+  background-color: #efefef;
+}
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+  background: #e4e4e4 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+/* @media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled {
+    margin-left: -15rem;
+  }
+} */
