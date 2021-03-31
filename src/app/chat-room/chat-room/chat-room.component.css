@@ -1,12 +1,13 @@
 .chatRoomParentDiv {
   background: #e4e4e4 0% 0% no-repeat padding-box;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   margin-left: 20px;
   margin-right: 3px;
 }
 
 .chatBox {
+  position: relative;
   background: #ffffff 0% 0% no-repeat padding-box;
   width: 100%;
   height: 560px;
@@ -40,7 +41,7 @@
 }
 
 .messageField {
-  width: 847px;
+  width: 787px;
   height: 50px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 37px;
@@ -49,7 +50,7 @@
   text-align: left;
   font: normal normal 600 22px/33px Segoe UI;
   letter-spacing: 0px;
-  color: #b9b9b9;
+  color: #110101;
   opacity: 1;
 }
 
@@ -65,17 +66,40 @@
   opacity: 1;
   position: absolute;
   bottom: 1%;
-  right: 32%;
+  right: 35%;
+}
+
+.previewImg {
+  height: 100px !important;
+  width: 50px !important;
 }
 
 .attachButton {
   position: absolute;
-  bottom: 1%;
-  right: 28%;
+  bottom: 0.5%;
+  right: 29%;
   background-color: #e4e4e4;
   border: none;
 }
 
+#uploadBtn {
+  background: #2c9e02 0% 0% no-repeat padding-box;
+  border-radius: 43px;
+  width: 92px;
+  height: 40px;
+  text-align: center;
+  font: normal normal 600 22px/30px Segoe UI;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+  float: right;
+}
+
+.uploadbuttonDiv {
+  position: absolute;
+  bottom: 1%;
+  right: 22%;
+}
 .messageByUser {
   width: 834px;
   height: 81px;
@@ -129,8 +153,34 @@ ul {
   opacity: 1;
 }
 
-mat-expansion-panel {
-  margin-top: 100px;
+.filelabel {
+  width: 80px;
+  border-radius: 5px;
+  display: block;
+  transition: border 300ms ease;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+}
+.filelabel i {
+  display: block;
+  font-size: 30px;
+  padding-bottom: 5px;
+}
+.filelabel i,
+.filelabel .title {
+  color: grey;
+  transition: 200ms color;
+}
+.filelabel:hover {
+  border: 2px solid #1665c4;
+}
+.filelabel:hover i,
+.filelabel:hover .title {
+  color: #1665c4;
+}
+#FileInput {
+  display: none;
 }
 
 mat-panel-title {

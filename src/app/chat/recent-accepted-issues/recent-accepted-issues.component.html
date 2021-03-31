@@ -1,8 +1,8 @@
 <div class="issueDiv mt-5 mx-5 col-lg-10 col-md-8">
     <div class="issue mt-2 mx-4"><p>Issue 1</p></div>
-    <div class="resolvedBy mx-5" >
+    <div *ngFor="let val of agents" class="resolvedBy mx-5" >
       <h3 class="mx-5 my-2" >Accepted By</h3>
-      <p class="mx-5 my-2">(Agent Name)</p>
+      <p class="mx-5 my-2">(  {{val.name.first_name + ' ' + val.name.last_name}} )</p>
     </div>
     <div class="continueButtonDiv">
       <!--accept button-->
@@ -12,7 +12,6 @@
       <!--transfer agent dropdown-->
       <div class="dropdown">
         <button
-          style="width: 300px; height: 85px"
           class="btn btn-outline-secondary dropdown-toggle"
           type="button"
           id="dropdownMenuButton"
@@ -23,35 +22,28 @@
           Transfer to Agent
         </button>
         <ul
+        *ngFor="let data of agents"
           class="dropdown-menu"
           style="text-align: center"
           aria-labelledby="dropdownMenuButton"
         >
-          <li style="padding-left: 0; width: 297px" class="dropdown-item">
+          <li style="padding-left: 0" class="dropdown-item">
             <span
               ><img
+                class="mx-2"
                 style="height: 29px; width: 29px"
                 src="../../../assets/user.jpg"
                 alt=""
             /></span>
-            Agent 1
+            <button
+              type="button"
+              (click)="openDialog()"
+              class="btn btn-light mx-2"
+            >
+            {{data.name.first_name + ' ' + data.name.last_name}}
+            </button>
           </li>
-          <li style="padding-left: 0" class="dropdown-item">
-            <span
-              ><img
-                style="height: 29px; width: 29px; margin-right: 5px"
-                src="../../../assets/user.jpg"
-                alt="" /></span
-            >Agent 2
-          </li>
-          <li style="padding-left: 0" class="dropdown-item">
-            <span
-              ><img
-                style="height: 29px; width: 29px; margin-right: 5px"
-                src="../../../assets/user.jpg"
-                alt="" /></span
-            >Agent 3
-          </li>
+         
         </ul>
       </div>
     </div>

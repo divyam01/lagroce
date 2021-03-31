@@ -1,5 +1,5 @@
-   <div class="row chatRoomParentDiv">
-  <div class="col chatBox">
+<div class="row chatRoomParentDiv">
+  <div class="col-lg-7 chatBox">
     <div class="chatBoxHeader">
       <header>
         <img
@@ -9,11 +9,11 @@
           alt=""
         />
         <h2 id="userName" style="font: normal normal normal 25px/33px Segoe UI">
-          {{senderName}}
+          senderName
         </h2>
-        <div class="chatBoxStatusDropDown"> 
+        <div class="chatBoxStatusDropDown">
           <!--transfer agent dropdown-->
-           <div class="dropdown">
+          <div class="dropdown">
             <button
               class="btn btn-lg btn-outline-secondary dropdown-toggle"
               type="button"
@@ -30,45 +30,65 @@
               aria-labelledby="dropdownMenuButton"
             >
               <li style="padding-left: 15px" class="dropdown-item">
-                Mark as resolved
+                <button
+                  type="button"
+                  (click)="openDialog((value = 'resolved'))"
+                  value="resolved"
+                  class="btn btn-light"
+                >
+                  Mark as resolved
+                </button>
               </li>
               <li style="padding-left: 12px" class="dropdown-item">
-                Mark as open
+                <button
+                  type="button"
+                  (click)="openDialogforOpen((value = 'open'))"
+                  value="open"
+                  class="btn btn-light"
+                >
+                  Mark as open
+                </button>
               </li>
             </ul>
           </div>
         </div>
       </header>
     </div>
-    <div class="col my-3">
-      <div style="justify-content: flex-start; display: flex">
-        <div class="my-2 mx-3">
-          <img
-            style="border-radius: 50px"
-            src="../../../assets/user.jpg"
-            height="50"
-            width="50"
-          />
+    <div style="height: 460px; overflow-y: scroll; overflow-x: hidden">
+      <div *ngFor="let item of messageDetails" class="row">
+        <div class="col my-3" *ngIf="item.senderID !== undefined">
+          <div style="justify-content: flex-start; display: flex">
+            <div class="my-2 mx-3">
+              <img
+                style="border-radius: 50px"
+                src="../../../assets/user.jpg"
+                height="50"
+                width="50"
+              />
+            </div>
+            <div class="messageByUser">
+              <p class="my-4 mx-3">{{ item.messageBody }}</p>
+            </div>
+          </div>
         </div>
-        <div class="messageByUser">
-          <p class="my-4 mx-3">Hello</p>
+        <div class="col my-3" *ngIf="item.agentID !== undefined">
+          <div style="justify-content: flex-start; display: flex">
+            <div class="messageByAgent">
+              <p class="my-4 mx-3">{{ item.messagebyAgent }}</p>
+            </div>
+            <div class="my-2 mx-3">
+              <img
+                style="border-radius: 50px"
+                src="../../../assets/user.jpg"
+                height="50"
+                width="50"
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col my-3">
-      <div style="justify-content: flex-start; display: flex; float: right">
-        
-        <div class="messageByAgent">
-          <p class="my-4 mx-3">{{msgByAgent}}</p>
-        </div>
-        <div class="my-2 mx-3">
-          <img
-            style="border-radius: 50px"
-            src="../../../assets/user.jpg"
-            height="50"
-            width="50"
-          />
-        </div>
+      <div class="previewImg" >
+        <img [src]="imgSrc" alt="" />
       </div>
     </div>
   </div>
@@ -80,18 +100,47 @@
             <mat-panel-title> Order details </mat-panel-title>
           </mat-expansion-panel-header>
           <div class="orderDetails">
-            <table>
+            <table *ngFor="let data of orderDetails" class="table">
               <tr>
-                <td>Order id: 1</td>
+                <td>Order id: {{ data.order_id }}</td>
                 <td>Store partner name: xyz</td>
               </tr>
               <tr>
-                <td>Prod details: 123</td>
+                <td>
+                  Prod details:
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-light dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    ></button>
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <table class="table">
+                        <tr>
+                          <td>Product name</td>
+                          <td>Quantity</td>
+                          <td>Price</td>
+                        </tr>
+                        <tr *ngFor="let items of data.products">
+                          <td>{{ items.product_details.name }}</td>
+                          <td>2</td>
+                          <td>{{ items.product_details.price }}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </td>
                 <td>POC no:</td>
               </tr>
               <tr>
-                <td>Deliv partner name:</td>
-                <td>Contact no:</td>
+                <td>Deliv partner name: {{ data.partner }}</td>
+                <td>Contact no: {{ data.address.mobileNo }}</td>
               </tr>
               <tr>
                 <td>Del part location: 123</td>
@@ -108,21 +157,26 @@
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title> Customer details </mat-panel-title>
-             
-           </mat-expansion-panel-header>
+          </mat-expansion-panel-header>
           <div>
-            <ul>
-              <li>
-                Name: {{ (user$ | async)?.name.first_name }}
-                {{ (user$ | async)?.name.last_name }}
-              </li>
-              <li>Mob no: {{ (user$ | async)?.mobile }}</li>
-              <li>Email id: {{ (user$ | async)?.email }}</li>
-            </ul>
+            <table class="table">
+              <tr>
+                <td>
+                  Name: {{ (user$ | async)?.name.first_name }}
+                  {{ (user$ | async)?.name.last_name }}
+                </td>
+              </tr>
+              <tr>
+                <td>Mob no: {{ (user$ | async)?.mobile }}</td>
+              </tr>
+              <tr>
+                <td>Email id: {{ (user$ | async)?.email }}</td>
+              </tr>
+            </table>
           </div>
-        </mat-expansion-panel> 
+        </mat-expansion-panel>
 
-         <mat-expansion-panel hideToggle>
+        <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <mat-panel-title> Previous issue </mat-panel-title>
           </mat-expansion-panel-header>
@@ -170,19 +224,37 @@
       </mat-accordion>
     </div>
   </div>
-</div>  
+</div>
 
 <!--Chat box footer-->
- <div class="mx-3 chatBoxFooter">
-  <footer>
-    <div><input class="messageField" type="text" placeholder="Type..." [(ngModel)]="message" (keydown)="handleSubmit($event)" /></div>
+<div class="mx-3 chatBoxFooter">
+  <footer style="margin-bottom: 5px;">
+    <div>
+      <input
+        class="messageField"
+        type="text"
+        placeholder="Send Message..."
+        [(ngModel)]="message"
+        (keydown)="handleSubmit($event)"
+      />
+    </div>
   </footer>
 </div>
-<button type="submit" class="sendButton" (click)="send()">Send</button>
-<button class="attachButton" type="submit"  >
-  <span class="material-icons">
-    <img src="../../../assets/attachment.png" alt="" />
-  </span>
-</button> 
-
-
+<button type="submit" class="sendButton"  (click)="handleClear()" (click)="send()">Send</button>
+<div class="attachButton">
+  <label class="filelabel">
+    <i class="fa fa-paperclip"> </i>
+    <!-- <span class="title"> Add File </span> -->
+    <input
+      class="FileUpload1"
+      (change)="upload($event)"
+      (change)="showPreview($event)"
+      id="FileInput"
+      name="booking_attachment"
+      type="file"
+    />
+  </label>
+</div>
+<div class="uploadbuttonDiv">
+  <button (click)="uploadImage()" (click)="openDialogSpinner()" id="uploadBtn" type="submit">Upload</button>
+</div>

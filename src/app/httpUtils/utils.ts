@@ -4,10 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AppUtils {
-  public url = 'https://staging-api.lagroce.com/bot/get-all-user-tickets';
+  baseUrl = 'https://staging-api.lagroce.com'
   constructor(private http: HttpClient) {}
  
-  get() {
-   return this.http.get(this.url);
+  get(url:any) {
+   return this.http.get(this.baseUrl+url);
   }
+
+  
 }
+ 

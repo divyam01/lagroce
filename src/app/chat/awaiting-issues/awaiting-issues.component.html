@@ -25,6 +25,7 @@
         Transfer to Agent
       </button>
       <ul
+      *ngFor="let data of agents"
         class="dropdown-menu"
         style="text-align: center"
         aria-labelledby="dropdownMenuButton"
@@ -32,28 +33,20 @@
         <li style="padding-left: 0" class="dropdown-item">
           <span
             ><img
+              class="mx-2"
               style="height: 29px; width: 29px"
               src="../../../assets/user.jpg"
               alt=""
           /></span>
-          Agent 1
+          <button
+            type="button"
+            (click)="openDialog()"
+            class="btn btn-light mx-2"
+          >
+          {{data.name.first_name + ' ' + data.name.last_name}}
+          </button>
         </li>
-        <li style="padding-left: 0" class="dropdown-item">
-          <span
-            ><img
-              style="height: 29px; width: 29px; margin-right: 5px"
-              src="../../../assets/user.jpg"
-              alt="" /></span
-          >Agent 2
-        </li>
-        <li style="padding-left: 0" class="dropdown-item">
-          <span
-            ><img
-              style="height: 29px; width: 29px; margin-right: 5px"
-              src="../../../assets/user.jpg"
-              alt="" /></span
-          >Agent 3
-        </li>
+       
       </ul>
     </div>
   </div>
@@ -63,10 +56,10 @@
       Order Id : <b>{{ items.order_id }}</b>
     </p>
   </div>
-  <div class="transferredBy">
+  <div *ngFor=" let val of agents" class="transferredBy">
     <!-- order id-->
-    <p>
-       Transferred By : <b>Agent Name</b>
+    <p >
+       Transferred By : <b> {{val.name.first_name + ' ' + val.name.last_name}} </b>
     </p>
   </div>
 </div>

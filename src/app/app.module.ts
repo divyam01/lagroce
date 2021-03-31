@@ -25,6 +25,15 @@ import { ChatRoomModule } from './chat-room/chat-room.module';
 import { environment } from 'src/environments/environment';
 import { UserService } from './_services/user.service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { OrdersService } from './_services/orders.service';
+import { DialogService } from './_services/dialog.service';
+import { AgentsService } from './_services/agents.service';
+import { CommonService } from './_services/common.service';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +46,10 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     RecentAcceptedIssuesComponent,
     AwaitingIssuesComponent,
     NavbarComponent,
+    DialogComponent,
+    SpinnerComponent,
   ],
+  entryComponents: [DialogComponent,SpinnerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,8 +63,20 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     ChatRoomModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    MatDialogModule,
+    AngularFireStorageModule,
+    MatProgressSpinnerModule
   ],
-  providers: [WaitingToAcceptService, AppUtils, FirebaseService, UserService],
+  providers: [
+    WaitingToAcceptService,
+    AppUtils,
+    FirebaseService,
+    UserService,
+    OrdersService,
+    DialogService,
+    AgentsService,
+    CommonService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

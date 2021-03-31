@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { WaitingToAcceptService } from '../../_services/waiting-to-accept.service';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../../_services/firebase.service';
+import { DialogService } from '../../_services/dialog.service';
+import { AgentsService } from '../../_services/agents.service';
 
 @Component({
   selector: 'app-waiting-for-accept',
@@ -10,10 +12,14 @@ import { FirebaseService } from '../../_services/firebase.service';
 })
 export class WaitingForAcceptComponent implements OnInit {
   data: any[] = [];
+
+  agents: any;
   constructor(
     private ser: WaitingToAcceptService,
     private router: Router,
-    private auth: FirebaseService
+    private auth: FirebaseService,
+    private dialog: DialogService,
+    private Agents: AgentsService
   ) {}
 
   ngOnInit(): void {
@@ -22,6 +28,15 @@ export class WaitingForAcceptComponent implements OnInit {
     });
     // this.auth.signUp();
     this.auth.signIn();
+
+    this.Agents.getAgentDetails().subscribe((res: any) => {
+      this.agents = res.data;
+      console.log(this.agents);
+    });
+  }
+
+  openDialog() {
+    this.dialog.openDialog();
   }
 
   redirect() {

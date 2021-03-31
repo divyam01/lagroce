@@ -37,30 +37,34 @@ export class FirebaseService {
       });
   }
 
-  sendMessage(user:any, message:string, chatID:string) {
-    console.log(user,message,chatID);
-    
-    const messageData = {
+  sendMessage(user: any, message: string , agent:any ) {
+    console.log(user, message);
+
+    const messagebyUser = {
       senderID: user._id,
       messageBody: message,
-      senderName: user.name.first_name+ ' ' +user.name.last_name,
+      senderName: user.name.first_name + ' ' + user.name.last_name,
       timeStamp: new Date().getTime(),
     };
-    console.log("message",messageData);
+    console.log('message', messagebyUser);
+
+    const messageByAgent = {
+      agentID:"njnn",
+      messagebyAgent:message,
+      agentName:'jnjn',
+      timeStamp: new Date().getTime(),
+    }
+    console.log("msg by agent",messageByAgent);
     
-    const agentMeta = {
-      name: user.name,
-      new: true,
-    };
-    const userMeta = {
-      new: false,
-    };
-    this.db.list(`Chat/${chatID}`).push(messageData);
-    this.db.database.ref(`Chat/${chatID}/meta-data/agent`).update(agentMeta);
-    this.db.database.ref(`Chat/${chatID}/meta-data/user`).update(userMeta);
+
+    
+    this.db.list(`Chat/`).push(messagebyUser);
+    
+    this.db.list(`Chat/`).push(messageByAgent);
   }
 
-  getMessagesList() {  
-    return this.db.object('Chat').valueChanges(); 
-}
+  getMessagesList() {
+    // return this.db.object('Chat').valueChanges();
+    return this.db.list ('Chat/').snapshotChanges()
+  }
 }
