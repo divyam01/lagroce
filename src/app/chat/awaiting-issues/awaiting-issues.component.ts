@@ -17,9 +17,13 @@ export class AwaitingIssuesComponent implements OnInit {
   ngOnInit(): void {
     this.ser.fetchDetails().subscribe((res: any) => {
       this.data = res.data;
+      console.log("data",this.data);
+      
     });
     this.Agents.getAgentDetails().subscribe((res:any)=>{
       this.agents=res.data
+      console.log("agents",this.agents);
+      
     })
   }
   openDialog(){
