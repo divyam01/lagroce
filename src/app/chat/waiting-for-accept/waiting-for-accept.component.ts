@@ -31,7 +31,7 @@ export class WaitingForAcceptComponent implements OnInit {
 
     this.Agents.getAgentDetails().subscribe((res: any) => {
       this.agents = res.data;
-      console.log(this.agents);
+      console.log("agents",this.agents);
     });
   }
 

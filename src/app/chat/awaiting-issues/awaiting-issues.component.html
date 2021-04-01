@@ -25,12 +25,12 @@
         Transfer to Agent
       </button>
       <ul
-        *ngFor="let data of agents"
+        
         class="dropdown-menu"
         style="text-align: center"
         aria-labelledby="dropdownMenuButton"
       >
-        <li style="padding-left: 0" class="dropdown-item">
+        <li *ngFor="let data of agents" style="padding-left: 0" class="dropdown-item">
           <span
             ><img
               class="mx-2"

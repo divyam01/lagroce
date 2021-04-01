@@ -54,7 +54,7 @@
         </div>
       </header>
     </div>
-    <div style="height: 460px; overflow-y: scroll; overflow-x: hidden">
+    <div #scrollMe [scrollTop]="scrollMe.scrollHeight" style="height: 460px; overflow-y: scroll; overflow-x: hidden">
       <div *ngFor="let item of messageDetails" class="row">
         <div class="col my-3" *ngIf="item.senderID !== undefined">
           <div style="justify-content: flex-start; display: flex">
@@ -230,31 +230,42 @@
 <div class="mx-3 chatBoxFooter">
   <footer style="margin-bottom: 5px;">
     <div>
-      <input
+      <form #ff='ngForm' >
+        <input
+        style="width: 60% !important;border-radius: 50px !important;"
         class="messageField"
         type="text"
+        name="message"
+        class="form-control"
         placeholder="Send Message..."
         [(ngModel)]="message"
         (keydown)="handleSubmit($event)"
+        required
+        #na='ngModel'
       />
+      <!-- <div *ngIf="na.invalid && na.touched">
+        <div *ngIf="na.errors.required" > Please write a message</div>
+      </div> -->
+      <button type="submit" class="sendButton"  (click)="handleClear()" (click)="send()" [disabled]='ff.invalid' >Send</button>
+      </form>
+      <div class="attachButton">
+        <label class="filelabel">
+          <i class="fa fa-paperclip"> </i>
+          <!-- <span class="title"> Add File </span> -->
+          <input
+            class="FileUpload1"
+            (change)="upload($event)"
+            (change)="showPreview($event)"
+            id="FileInput"
+            name="booking_attachment"
+            type="file"
+          />
+        </label>
+      </div>
+      
     </div>
   </footer>
 </div>
-<button type="submit" class="sendButton"  (click)="handleClear()" (click)="send()">Send</button>
-<div class="attachButton">
-  <label class="filelabel">
-    <i class="fa fa-paperclip"> </i>
-    <!-- <span class="title"> Add File </span> -->
-    <input
-      class="FileUpload1"
-      (change)="upload($event)"
-      (change)="showPreview($event)"
-      id="FileInput"
-      name="booking_attachment"
-      type="file"
-    />
-  </label>
-</div>
-<div class="uploadbuttonDiv">
-  <button (click)="uploadImage()" (click)="openDialogSpinner()" id="uploadBtn" type="submit">Upload</button>
-</div>
+
+
+

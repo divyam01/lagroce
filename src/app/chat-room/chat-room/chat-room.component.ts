@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { UserService } from '../../_services/user.service';
 import { FirebaseService } from '../../_services/firebase.service';
@@ -30,7 +30,6 @@ export class ChatRoomComponent implements OnInit {
   progress: Number;
   imgSrc: string;
   selectedImg: any;
-  
 
   constructor(
     private userService: UserService,
@@ -101,17 +100,13 @@ export class ChatRoomComponent implements OnInit {
       this.ser.openVal = value;
     }
   }
-  openDialogSpinner() {
-   setTimeout(()=>{
-     this.dialog.openSpinner()
-   },2000)
-  }
 
   upload($event) {
     this.path = $event.target.files[0];
-  }
-  uploadImage() {
     this.storage.upload('files/' + Math.random(), this.path);
+    setTimeout(() => {
+      this.dialog.openSpinner();
+    }, 2000);
   }
 
   showPreview(event: any) {
