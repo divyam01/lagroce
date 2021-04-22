@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFireDatabase,
-  AngularFireList,
-  AngularFireObject,
 } from '@angular/fire/database';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
@@ -37,7 +35,7 @@ export class FirebaseService {
       });
   }
 
-  sendMessage(user: any, message: string , agent:any ) {
+  sendMessage(user: any, message: string, agent: any) {
     console.log(user, message);
 
     const messagebyUser = {
@@ -49,22 +47,20 @@ export class FirebaseService {
     console.log('message', messagebyUser);
 
     const messageByAgent = {
-      agentID:"njnn",
-      messagebyAgent:message,
-      agentName:'jnjn',
+      agentID: 'njlnn',
+      messagebyAgent: message,
+      agentName: 'jnjn',
       timeStamp: new Date().getTime(),
-    }
-    console.log("msg by agent",messageByAgent);
-    
+    };
+    console.log('msg by agent', messageByAgent);
 
-    
     this.db.list(`Chat/`).push(messagebyUser);
-    
+
     this.db.list(`Chat/`).push(messageByAgent);
   }
 
   getMessagesList() {
-    // return this.db.object('Chat').valueChanges();
-    return this.db.list ('Chat/').snapshotChanges()
+    
+    return this.db.list('Chat/').snapshotChanges();
   }
 }

@@ -10,7 +10,7 @@ export class UserService {
   getUsers(userId = '60223bbbdba4e668ac2f8443') {
     return this.http
       .get<{ data: any[] }>(
-        'https://staging-api.lagroce.com/bot/get-user-details/' + userId
+        'https://staging.lagroce.com/bot/get-user-details/' + userId
       )
       .pipe(map((response) => response.data));
   }
@@ -18,7 +18,7 @@ export class UserService {
   get orders() {
     return this.http
       .get<{ data: any[] }>(
-        'https://staging-api.lagroce.com/bot/get-all-user-tickets'
+        'https://staging.lagroce.com/bot/get-all-user-tickets'
       )
       .pipe(
         map((res) => {

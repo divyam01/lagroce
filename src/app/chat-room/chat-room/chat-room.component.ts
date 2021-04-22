@@ -9,6 +9,7 @@ import { CommonService } from '../../_services/common.service';
 import { AgentsService } from '../../_services/agents.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import * as firebase from 'firebase';
+import { AppUtils } from 'src/app/httpUtils/utils';
 
 @Component({
   selector: 'app-chat-room',
@@ -30,6 +31,9 @@ export class ChatRoomComponent implements OnInit {
   progress: Number;
   imgSrc: string;
   selectedImg: any;
+  timeStamp: any;
+  ticketId;
+  agentId;
 
   constructor(
     private userService: UserService,
@@ -38,7 +42,8 @@ export class ChatRoomComponent implements OnInit {
     private orders: OrdersService,
     private ser: CommonService,
     private Agent: AgentsService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private http:AppUtils
   ) {}
 
   ngOnInit(): void {
@@ -63,10 +68,12 @@ export class ChatRoomComponent implements OnInit {
       this.orderDetails = res.data;
       console.log('order details', this.orderDetails);
     });
+    
 
     this.Agent.getAgentDetails().subscribe((res: any) => {
       this.agent = res.data;
       console.log('agent details', this.agent);
+      this.agentId = this.agent[0]._id
     });
   }
 
@@ -84,7 +91,7 @@ export class ChatRoomComponent implements OnInit {
       setTimeout(() => {
         this.message = null;
       }, 500);
-    }
+    } 
   }
   openDialog(value) {
     if (value === 'resolved') {
@@ -124,5 +131,8 @@ export class ChatRoomComponent implements OnInit {
     setTimeout(() => {
       this.message = null;
     }, 500);
+  }
+  markAsResolved(){
+
   }
 }

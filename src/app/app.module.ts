@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { HttpClientModule } from '@angular/common/http';
 import { WaitingToAcceptService } from './_services/waiting-to-accept.service';
@@ -31,9 +31,17 @@ import { OrdersService } from './_services/orders.service';
 import { DialogService } from './_services/dialog.service';
 import { AgentsService } from './_services/agents.service';
 import { CommonService } from './_services/common.service';
-import {AngularFireStorageModule} from '@angular/fire/storage';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { AuthService } from './_services/auth.service';
+import { AuthGuard } from './_guards/auth.guard';
+import {MatInputModule} from '@angular/material/input';
+import { SearchbarComponent } from './chat/searchbar/searchbar.component';
+
+
 
 @NgModule({
   declarations: [
@@ -48,8 +56,12 @@ import { SpinnerComponent } from './spinner/spinner.component';
     NavbarComponent,
     DialogComponent,
     SpinnerComponent,
+    LoginComponent,
+    SignupComponent,
+    SearchbarComponent,
+    
   ],
-  entryComponents: [DialogComponent,SpinnerComponent],
+  entryComponents: [DialogComponent, SpinnerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -65,7 +77,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     AngularFireDatabaseModule,
     MatDialogModule,
     AngularFireStorageModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [
     WaitingToAcceptService,
@@ -76,6 +90,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     DialogService,
     AgentsService,
     CommonService,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent],
 })

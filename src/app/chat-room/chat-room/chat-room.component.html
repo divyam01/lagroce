@@ -8,8 +8,12 @@
           src="../../../assets/profile.png"
           alt=""
         />
-        <h2 id="userName" style="font: normal normal normal 25px/33px Segoe UI">
-          senderName
+        <h2
+          *ngFor="let data of messageDetails"
+          id="userName"
+          style="font: normal normal normal 25px/33px Segoe UI"
+        >
+          {{ data.senderName }}
         </h2>
         <div class="chatBoxStatusDropDown">
           <!--transfer agent dropdown-->
@@ -32,6 +36,7 @@
               <li style="padding-left: 15px" class="dropdown-item">
                 <button
                   type="button"
+                  (click)="markAsResolved()"
                   (click)="openDialog((value = 'resolved'))"
                   value="resolved"
                   class="btn btn-light"
@@ -54,7 +59,11 @@
         </div>
       </header>
     </div>
-    <div #scrollMe [scrollTop]="scrollMe.scrollHeight" style="height: 460px; overflow-y: scroll; overflow-x: hidden">
+    <div
+      #scrollMe
+      [scrollTop]="scrollMe.scrollHeight"
+      style="height: 460px; overflow-y: scroll; overflow-x: hidden"
+    >
       <div *ngFor="let item of messageDetails" class="row">
         <div class="col my-3" *ngIf="item.senderID !== undefined">
           <div style="justify-content: flex-start; display: flex">
@@ -68,6 +77,9 @@
             </div>
             <div class="messageByUser">
               <p class="my-4 mx-3">{{ item.messageBody }}</p>
+              <div id="userTime" class="time">
+                {{ item.timeStamp | date: "M/d/yy, h:mm a" }}
+              </div>
             </div>
           </div>
         </div>
@@ -75,6 +87,9 @@
           <div style="justify-content: flex-start; display: flex">
             <div class="messageByAgent">
               <p class="my-4 mx-3">{{ item.messagebyAgent }}</p>
+              <div id="agentTime" class="time">
+                {{ item.timeStamp | date: "M/d/yy, h:mm a" }}
+              </div>
             </div>
             <div class="my-2 mx-3">
               <img
@@ -87,7 +102,7 @@
           </div>
         </div>
       </div>
-      <div class="previewImg" >
+      <div class="previewImg">
         <img [src]="imgSrc" alt="" />
       </div>
     </div>
@@ -228,25 +243,33 @@
 
 <!--Chat box footer-->
 <div class="mx-3 chatBoxFooter">
-  <footer style="margin-bottom: 5px;">
+  <footer style="margin-bottom: 5px">
     <div>
-      <form #ff='ngForm' >
+      <form #ff="ngForm">
         <input
-        style="width: 60% !important;border-radius: 50px !important;"
-        class="messageField"
-        type="text"
-        name="message"
-        class="form-control"
-        placeholder="Send Message..."
-        [(ngModel)]="message"
-        (keydown)="handleSubmit($event)"
-        required
-        #na='ngModel'
-      />
-      <!-- <div *ngIf="na.invalid && na.touched">
+          style="width: 60% !important; border-radius: 50px !important"
+          class="messageField"
+          type="text"
+          name="message"
+          class="form-control"
+          placeholder="Send Message..."
+          [(ngModel)]="message"
+          (keydown)="handleSubmit($event)"
+          required
+          #na="ngModel"
+        />
+        <!-- <div *ngIf="na.invalid && na.touched">
         <div *ngIf="na.errors.required" > Please write a message</div>
       </div> -->
-      <button type="submit" class="sendButton"  (click)="handleClear()" (click)="send()" [disabled]='ff.invalid' >Send</button>
+        <button
+          type="submit"
+          class="sendButton"
+          (click)="handleClear()"
+          (click)="send()"
+          [disabled]="ff.invalid"
+        >
+          Send
+        </button>
       </form>
       <div class="attachButton">
         <label class="filelabel">
@@ -262,10 +285,6 @@
           />
         </label>
       </div>
-      
     </div>
   </footer>
 </div>
-
-
-

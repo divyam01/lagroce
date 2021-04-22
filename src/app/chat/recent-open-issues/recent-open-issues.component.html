@@ -1,9 +1,14 @@
-<div *ngFor="let val of agents;let i=index" class="issueDiv mt-5 mx-5 col-lg-10 col-md-8">
-  <div class="issue mt-2 mx-4"><p>Issue {{i+1}}</p></div>
-  <div  class="resolvedBy mx-5">
-    <h3 class="mx-5 my-2">Open By</h3>
+<div
+  *ngFor="let val of data; let i = index"
+  class="issueDiv mt-5 mx-5 col-lg-10 col-md-8"
+> 
+  <div class="issue mt-2 mx-4">
+    <p>Issue {{ i + 1 }} : {{val.issue_reason}}</p>
+  </div>
+  <div class="resolvedBy mx-5">
+    <h3 class="mx-5 my-2">Open By</h3> 
     <p class="mx-5 my-2">
-      ( {{ val.name.first_name + " " + val.name.last_name }} )
+      ( {{ val.customer_agent_assigned }} )
     </p>
   </div>
   <div class="continueButtonDiv">
@@ -24,12 +29,15 @@
         Transfer to Agent
       </button>
       <ul
-       
         class="dropdown-menu"
         style="text-align: center"
         aria-labelledby="dropdownMenuButton"
       >
-        <li  *ngFor="let data of agents" style="padding-left: 0" class="dropdown-item">
+        <li
+          *ngFor="let data of agents"
+          style="padding-left: 0"
+          class="dropdown-item"
+        >
           <span
             ><img
               class="mx-2"
@@ -39,6 +47,7 @@
           /></span>
           <button
             type="button"
+            (click)="transferToAgent(data._id)"
             (click)="openDialog()"
             class="btn btn-light mx-2"
           >
@@ -47,5 +56,8 @@
         </li>
       </ul>
     </div>
+  </div> 
+  <div class="orderId">
+    <p>Order Id: <b>{{val.order_id}}</b></p>
   </div>
 </div>

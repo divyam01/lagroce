@@ -9,12 +9,19 @@
       >
         <!--Search bar-->
         <div class="col-5 col-sm-5 search-col">
-          <input
-            type="search"
-            id="search-bar"
-            placeholder="Search order id, cust name, mob no, email id"
-          />
+          <form>
+            <input
+              type="search"
+              id="search-bar"
+              class="form-control"
+              [(ngModel)]="search"
+              name="search"
+              placeholder="Search order id, mob no, email id"
+            />
+            <button type="submit" id="searchBtn" (click)="getSearchValue()"><i class="material-icons">search</i></button>
+          </form>
         </div>
+
         <!--Calendar pop-up-->
         <div class="">
           <mat-form-field appearance="" style="visibility: hidden; width: 1px">

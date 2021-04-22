@@ -29,8 +29,8 @@
   top: 30%;
 }
 #chatBoxProfileImg {
-  height: 70px;
-  width: 70px;
+  height: 65px;
+  width: 65px;
   border: 1px solid #d2cece;
   border-radius: 50px;
 }
@@ -81,23 +81,34 @@
   border: none;
 }
 
-
 .messageByUser {
+  position: relative;
   width: 834px;
-  height: 81px;
+  height: 75px;
   background: #ececee 0% 0% no-repeat padding-box;
   border: 1px solid #d8d7d7;
   border-radius: 39px;
   opacity: 1;
 }
+#userTime {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}
 
 .messageByAgent {
+  position: relative;
   width: 834px;
-  height: 81px;
+  height: 75px;
   background: #ececee 0% 0% no-repeat padding-box;
   border: 1px solid #d8d7d7;
   border-radius: 39px;
   opacity: 1;
+}
+#agentTime {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
 }
 
 .customerDetails {

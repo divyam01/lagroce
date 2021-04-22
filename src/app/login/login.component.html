@@ -1,0 +1,46 @@
+
+
+<div class="loginParentDiv">
+  <div class="logo my-4"><img style="height: 60px; width: 260px;" src="../../assets//Lagroce Logo type.png" alt=""></div>
+  <div class="signupDiv">
+    <h1 class="signupDivHeading" >Welcome Back!</h1>
+    <p class="signupDivPara my-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id molestie leo, et varius est. Praesent convallis neque ipsum, a tempus nibh volutpat nec.</p>
+    <button (click)="redirect()" class="signupBtn">Sign Up</button>
+  </div>
+  
+  <div class="loginFormDiv">
+    <h2 id="loginHeading" >Login to account</h2> 
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="insertDetails()" >
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="loginForm.controls['email'].invalid &&
+        loginForm.controls['email'].touched">
+          Please enter a valid email address
+        </mat-error>
+        <!-- <mat-error *ngIf="signupForm.controls['email'].invalid &&
+        signupForm.controls['email'].touched">
+          Email is <strong>required</strong>
+        </mat-error> -->
+       
+      </mat-form-field><br>
+      <mat-form-field appearance="outline" class="example-full-width">
+        
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="Password">
+        
+        <mat-error *ngIf=" loginForm.controls['password'].invalid &&
+        loginForm.controls['password'].touched">
+          Password is <strong>required</strong>
+        </mat-error>
+        <!-- <mat-error *ngIf="">
+          Password is <strong>invalid</strong>
+        </mat-error> -->
+      </mat-form-field><br>
+      <div class="my-1" style="float: right;"><button class="forgotBtn">Forgot Password?</button><br></div>
+      <div><button type="submit" class="loginBtn " [disabled]="loginForm.invalid" >Log In</button></div>
+    </form>
+    
+    
+  </div>
+</div>

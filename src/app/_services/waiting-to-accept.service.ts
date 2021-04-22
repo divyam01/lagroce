@@ -6,7 +6,7 @@ import { AppUtils } from '../httpUtils/utils';
   providedIn: 'root',
 })
 export class WaitingToAcceptService {
-  url = '/bot/get-all-user-tickets';
+  url = '/bot/get-awaiting-accept-tickets';
   constructor(private http: AppUtils) {}
 
   // fetching data from api

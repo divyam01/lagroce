@@ -19,7 +19,7 @@
         type="button"
         id="dropdownMenuButton"
         data-toggle="dropdown"
-        aria-haspopup="true"
+        aria-haspopup="true" 
         aria-expanded="false"
       >
         Transfer to Agent
@@ -41,6 +41,7 @@
           <button
             type="button"
             (click)="openDialog()"
+            (click)="transferToAgent(data._id)"
             class="btn btn-light mx-2"
           >
             {{ data.name.first_name + " " + data.name.last_name }}

@@ -1,0 +1,68 @@
+
+.loginParentDiv {
+  position: relative;
+  background-color: white;
+  border-radius: 25px;
+  width: 60%;
+  margin-left: 350px;
+  
+
+}
+.logo{
+    margin-left: 300px;
+}
+
+.loginFormDiv {
+  position: absolute;
+  top: 26%;
+  right: 14%;
+}
+.signupDiv {
+  padding-top: 100px;
+  height: 470px;
+  width: 45%;
+  background-color: green;
+  border-radius: 25px;
+  text-align: center;
+}
+
+#loginHeading {
+  text-align: right;
+  color: green;
+  font-weight: bold;
+  font-size: 30px;
+
+}
+.forgotBtn{
+
+}
+.signupDivHeading{
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+
+}
+.signupDivPara{
+    color: white;
+    text-align: left;
+    padding-left: 50px;
+    padding-right:30px ;
+    font-size: smaller;
+
+}
+
+.signupBtn {
+    border: 1px solid white;
+    border-radius: 50px;
+    color: white;
+    padding: 5px 45px ;
+
+}
+
+.loginBtn{
+    border: 1px solid green;
+    border-radius: 50px;
+    color: green;
+    padding: 5px 45px ;
+
+}
