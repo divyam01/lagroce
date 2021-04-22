@@ -13,13 +13,17 @@
   height: 560px;
 }
 
+#userName{
+  font-size: 22px !important;
+}
+
 .chatBoxHeader {
   position: relative;
 }
 
 .chatBoxHeader h2 {
   position: absolute;
-  left: 150px;
+  left: 120px;
   top: 20px;
 }
 

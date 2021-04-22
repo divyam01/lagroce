@@ -19,6 +19,8 @@
   background-color: #2c9e02;
   color: #ffffff;
   width: 144px;
+  padding: 4.5px;
+  border-radius: .25rem;
 }
 .continueButtonDiv {
   position: absolute;

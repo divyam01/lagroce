@@ -19,12 +19,14 @@
   background-color: #2c9e02;
   color: #ffffff;
   width: 144px;
+  padding: 4.5px;
+  border-radius: .25rem;
 }
 .acceptButtonDiv {
   position: absolute;
   font: normal normal 200 22px/30px Segoe UI;
   left: 125px;
-  top: 120px;
+  top: 118px;
 }
 
 .transferAgent {
